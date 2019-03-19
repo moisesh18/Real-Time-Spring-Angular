@@ -1,0 +1,7 @@
+com/javasampleapproach/springrest/mongodb/model/Message.class
+com/javasampleapproach/springrest/mongodb/controller/MessageController.class
+com/javasampleapproach/springrest/mongodb/model/Customer.class
+com/javasampleapproach/springrest/mongodb/controller/CustomerController.class
+com/javasampleapproach/springrest/mongodb/SpringRestMongoDbApplication.class
+com/javasampleapproach/springrest/mongodb/repo/CustomerRepository.class
+com/javasampleapproach/springrest/mongodb/repo/MessageRepository.class

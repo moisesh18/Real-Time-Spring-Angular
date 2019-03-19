@@ -1,0 +1,7 @@
+/Users/moiseshernandez/developer/dispositivos moviles/server/src/main/java/com/javasampleapproach/springrest/mongodb/model/Message.java
+/Users/moiseshernandez/developer/dispositivos moviles/server/src/main/java/com/javasampleapproach/springrest/mongodb/repo/MessageRepository.java
+/Users/moiseshernandez/developer/dispositivos moviles/server/src/main/java/com/javasampleapproach/springrest/mongodb/controller/CustomerController.java
+/Users/moiseshernandez/developer/dispositivos moviles/server/src/main/java/com/javasampleapproach/springrest/mongodb/controller/MessageController.java
+/Users/moiseshernandez/developer/dispositivos moviles/server/src/main/java/com/javasampleapproach/springrest/mongodb/model/Customer.java
+/Users/moiseshernandez/developer/dispositivos moviles/server/src/main/java/com/javasampleapproach/springrest/mongodb/SpringRestMongoDbApplication.java
+/Users/moiseshernandez/developer/dispositivos moviles/server/src/main/java/com/javasampleapproach/springrest/mongodb/repo/CustomerRepository.java
