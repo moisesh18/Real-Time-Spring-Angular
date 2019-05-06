@@ -1,0 +1,26 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
+    <a routerLink="/" class="navbar-brand mr-auto flex-fill  text-center">
+      RIKITIX EN LOCALHOST
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09"
+      aria-controsls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExample09">
+      <ul class="navbar-nav mr-auto flex-fill">
+        <li *ngIf="!loginService.isUserLoggedIn()" class="nav-item flex-fill text-center">
+          <a routerLink="/login" class="nav-link">
+            Login
+          </a>
+        </li>
+        <li *ngIf="loginService.isUserLoggedIn()" class="nav-item flex-fill text-center">
+          <a routerLink="/logout" class="nav-link">
+            LogOut
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
