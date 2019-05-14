@@ -16,12 +16,8 @@ import { Message } from '../../models/message';
 })
 export class SocketComponent implements OnInit {
 
-
-  //TODO: cada usuario tiene un ID
-  // El usuario debe de tener una lista de todos los maestros
-  // Grupos por maestro.
-
   private serverUrl = environment.url + 'socket'
+  username: string = sessionStorage.getItem('username');
   isLoaded: boolean = false;
   isCustomSocketOpened = false;
   private stompClient;
@@ -42,17 +38,18 @@ export class SocketComponent implements OnInit {
     this.initializeWebSocketConnection();
   }
 
-
   sendMessageUsingSocket() {
     if (this.form.valid) {
-      let message: Message = { message: this.form.value.message, fromId: this.userForm.value.fromId, toId: this.userForm.value.toId };
+      let message: Message = { message: this.form.value.message, fromId: this.username, toId: this.userForm.value.toId };
       this.stompClient.send("/socket-subscriber/send/message", {}, JSON.stringify(message));
+      this.form.reset();
+      this.userForm.reset();
     }
   }
 
   sendMessageUsingRest() {
     if (this.form.valid) {
-      let message: Message = { message: this.form.value.message, fromId: this.userForm.value.fromId, toId: this.userForm.value.toId };
+      let message: Message = { message: this.form.value.message, fromId: this.username, toId: this.userForm.value.toId };
       this.socketService.post(message).subscribe(res => {
         console.log(res);
       })
@@ -60,12 +57,14 @@ export class SocketComponent implements OnInit {
   }
 
   initializeWebSocketConnection() {
+    console.log(this.serverUrl);
     let ws = new SockJS(this.serverUrl);
     this.stompClient = Stomp.over(ws);
     let that = this;
     this.stompClient.connect({}, function (frame) {
       that.isLoaded = true;
-      that.openGlobalSocket()
+      that.openGlobalSocket();
+      that.openSocket();
     });
   }
 
@@ -78,7 +77,7 @@ export class SocketComponent implements OnInit {
   openSocket() {
     if (this.isLoaded) {
       this.isCustomSocketOpened = true;
-      this.stompClient.subscribe("/socket-publisher/" + this.userForm.value.fromId, (message) => {
+      this.stompClient.subscribe("/socket-publisher/" + this.username, (message) => {
         this.handleResult(message);
       });
     }
@@ -89,7 +88,7 @@ export class SocketComponent implements OnInit {
       let messageResult: Message = JSON.parse(message.body);
       console.log(messageResult);
       this.messages.push(messageResult);
-      this.toastr.success("new message recieved", null, {
+      this.toastr.success("Nuevo mensaje recibido", null, {
         'timeOut': 3000
       });
     }

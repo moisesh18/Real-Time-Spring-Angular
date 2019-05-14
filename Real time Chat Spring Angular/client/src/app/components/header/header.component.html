@@ -1,7 +1,7 @@
-<header>
+<header *ngIf="loginService.isUserLoggedIn()">
   <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
     <a routerLink="/" class="navbar-brand mr-auto flex-fill  text-center">
-      RIKITIX EN LOCALHOST
+      <p>Hola! {{username}}</p>
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09"
       aria-controsls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,14 +10,9 @@
 
     <div class="collapse navbar-collapse" id="navbarsExample09">
       <ul class="navbar-nav mr-auto flex-fill">
-        <li *ngIf="!loginService.isUserLoggedIn()" class="nav-item flex-fill text-center">
-          <a routerLink="/login" class="nav-link">
-            Login
-          </a>
-        </li>
         <li *ngIf="loginService.isUserLoggedIn()" class="nav-item flex-fill text-center">
           <a routerLink="/logout" class="nav-link">
-            LogOut
+            Cerrar sesión
           </a>
         </li>
       </ul>

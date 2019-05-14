@@ -8,6 +8,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
+  username: string = sessionStorage.getItem('username');
   constructor(private loginService: AuthService) { }
 
   ngOnInit() {

@@ -1,10 +1,10 @@
-package com.yamicode.socket.repo;
+package com.chat.repo;
 
 import java.util.List;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-import com.yamicode.socket.model.Message;
+import com.chat.model.Message;
 
 public interface MessageRepository extends MongoRepository<Message, String> {
 }

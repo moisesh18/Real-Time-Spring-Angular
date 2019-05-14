@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/User';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,28 +12,16 @@ export class HttpClientService {
   }
 
   getUser() {
-    let username = 'test'
-    let password = 'test'
-
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
-    return this.httpClient.get<User[]>('http://localhost:8080/api/users', { headers });
+    return this.httpClient.get<User[]>(environment.url + 'users');
   }
 
 
   public deleteUser(user) {
-    let username = 'javainuse'
-    let password = 'password'
-
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
-    return this.httpClient.delete<User>("http://localhost:8080/api/users" + "/" + user.id, { headers });
+    return this.httpClient.delete<User>(environment.url + "users" + "/" + user.id);
   }
 
   public createUser(user) {
-    let username = 'javainuse'
-    let password = 'password'
-
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
-    return this.httpClient.post<User>("http://localhost:8080/api/users", user, { headers });
+    return this.httpClient.post<User>(environment.url + "users", user);
   }
 
 }

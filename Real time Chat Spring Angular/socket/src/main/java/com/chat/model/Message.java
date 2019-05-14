@@ -1,4 +1,4 @@
-package com.yamicode.socket.model;
+package com.chat.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
